@@ -1,0 +1,85 @@
+body{
+    background-color: antiquewhite;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.select{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    width: 45vw;
+    background-color: rgba(255, 0, 0, 0.561);
+    margin: 2% auto;
+}
+
+.labelSelect{
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 2%;
+    padding: 1%;
+    font-size: 2.4rem;
+}
+#paises{
+    font-family: 'Courier New', Courier, monospace;
+    background-color:  rgba(248, 177, 177, 0.749) ;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px black;
+    height: 10vh;
+    width: 15vw;
+    padding: 1%;
+    margin-right: 10%;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.container{
+    display: flex;
+    align-items: center;
+    height: 20vh;
+    width: 45vw;
+    background-color: rgba(255, 0, 0, 0.561);
+    margin: 2% auto;
+}
+.titulo{
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 2%;
+    padding:0.5em;
+    font-size: 2.4rem;
+}
+#input{
+    height: 5vh;
+    width: 10vw;
+    margin-right: 1%;
+}
+
+#buttonImp, #botonAgregar, #botonReiniciar{
+    font-family: 'Courier New', Courier, monospace;
+    background-color:  rgba(248, 177, 177, 0.749) ;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px black;
+    height: 7vh;
+    width: 10vw;
+    padding: 1%;
+    margin: 1%;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+#botonReiniciar{
+    padding-top: 0.5%;
+}
+
+.listaJuego{
+    display: flex;
+    justify-content: center;
+    margin: 1% auto;
+    padding: 2.3% 1.5% 1.5% 1.5%;
+    font-size: 1.2rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    height: 7vh;
+    width: 55vw;
+    list-style: none;
+    background-color:  rgba(248, 177, 177, 0.749);
+}
+

@@ -4,9 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GAMZ-Calculador de impuestos</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <script src="./main.js"></script>
+    <button id="botonReiniciar">Borrar Historial</button>
+    <form class="select" action="">
+        <label class="labelSelect" for="paises">Selecciona el pais a calcular</label>
+        <select name="paises" id="paises">
+            <option value="default">Selecciona un pais</option>
+        </select>
+    </form>
+
+<section id="section" class="container"></section>
+<ul class="resultadosLista"></ul>
+
+
+    <script src="./objects.js"></script>
+    <script src="./functions.js"></script>
+    <script src="./dom.js"></script>
 </body>
 </html>
