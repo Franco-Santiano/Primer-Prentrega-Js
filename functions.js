@@ -10,6 +10,7 @@ function crearOpciones(){
     })};
 
 //funcion para determinar el impuesto
+//Fijarse que el usuario pueda poner los porcentajes en el formato que el quiera x*100/100
 let impuestoAplicable;
 let monedaAplicable;
 function determinarImp(){
@@ -23,15 +24,17 @@ function determinarImp(){
 
 //funcion encargada de calcular el valor del juego con el impuesto e inyectar en una li los resultados.
 function calcularImp(){
-    let valorDelJuego = document.querySelector("#input")
-    let valorCalculable = valorDelJuego.value
-    let lista = document.createElement("li")
-    lista.className = "listaJuego"
-    resultadoFinal.appendChild(lista)
-    !isNaN(impuestoAplicable) && valorCalculable != 0? lista.innerText = `El valor del impuesto es de ${parseInt(impuestoAplicable*100-100)}% y mas el valor del juego te da un total de ${parseInt(valorCalculable * impuestoAplicable)} ${monedaAplicable}` : lista.innerText = "Los datos ingresados no son validos, porfavor intente nuevamente";
+        let valorDelJuego = document.querySelector("#input")
+        let valorCalculable = valorDelJuego.value
+        let lista = document.createElement("li")
+        lista.className = "listaJuego"
+        resultadoFinal.appendChild(lista)
+        lista.innerText = !isNaN(impuestoAplicable) && valorCalculable != 0? `El valor del impuesto es de ${(Number.isInteger(impuestoAplicable)?impuestoAplicable:(impuestoAplicable*100-100).toFixed(2))}% y mas el valor del juego te da un total de ${(valorCalculable * (Number.isInteger(impuestoAplicable)?impuestoAplicable/100+1:impuestoAplicable)).toFixed(2)} ${monedaAplicable}` : "Los datos ingresados no son validos, porfavor intente nuevamente";
+
 }
 
-// Funcion que verifica si el texto contiene solo letras y numeros
+
+// Funcion que verifica si el texto contiene solo letras y numeros 
 function validarTextoSinSimbolos(a) {
 const regex = /^[A-Za-z0-9\s]+$/;
 return regex.test(a);
