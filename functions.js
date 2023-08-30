@@ -37,7 +37,6 @@ function randNum(){
         return numeroAleatorio;
 }
 
-const numAleatorio = randNum()
 
 const rickYmorty = (aleatorio, lista) => {
         fetch(`https://rickandmortyapi.com/api/character/${aleatorio}`)
@@ -61,6 +60,7 @@ function calcularImp(){
         const classNombre = claseUnica()
         lista.className = classNombre;
         resultadoFinal.appendChild(lista)
+        rickYmorty(numeroAleatorio,lista);
         lista.innerHTML = !isNaN(impuestoAplicable) && valorCalculable != 0? `<button class = "borrarBtn" data-class ="${classNombre}">X</button>El valor del impuesto es de ${(Number.isInteger(impuestoAplicable)?impuestoAplicable:(impuestoAplicable*100-100).toFixed(2))}% y mas el valor del juego te da un total de ${(valorCalculable * (Number.isInteger(impuestoAplicable)?impuestoAplicable/100+1:impuestoAplicable)).toFixed(2)} ${monedaAplicable}` : `<button class = "borrarBtn" data-class ="${classNombre}">X</button>Los datos ingresados no son validos, porfavor intente nuevamente`;
        
        //algoritmo para borrar la li seleccionada por el boton utilizando el atributo data
@@ -71,7 +71,6 @@ function calcularImp(){
         if(eliminarLi){
                 resultadoFinal.removeChild(eliminarLi);
         }
-        rickYmorty(numeroAleatorio,lista);
    });
 });
 
