@@ -97,10 +97,11 @@ li{
 
 .rick{
     position: absolute;
-    top: 0.9rem;
+    top: 0.5rem;
     left: -9rem;
     height: 120px;
     border-radius: 25px;
+    box-shadow: 4px 4px #000000;
 }
 
 .borrarBtn{

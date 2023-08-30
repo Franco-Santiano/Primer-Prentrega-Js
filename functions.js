@@ -37,18 +37,11 @@ function randNum(){
         return numeroAleatorio;
 }
 
-
-const rickYmorty = (aleatorio, lista) => {
-        fetch(`https://rickandmortyapi.com/api/character/${aleatorio}`)
-        .then((resp)=>resp.json())
-        .then ((data) => {
-                const img = document.createElement("div");
-                img.innerHTML = `
-                <div>
-                <img class= "rick" src ="${data.image}" alt = "random" />
-                </div>`;
-        lista.appendChild(img);
-        });
+//funcion que consume API de rick y morty
+const rickYmorty = async (aleatorio) =>{
+        const resp = await fetch(`https://rickandmortyapi.com/api/character/${aleatorio}`);
+        const data = await resp.json();
+        return data;
 }
 
 
@@ -59,24 +52,26 @@ function calcularImp(){
         const lista = document.createElement("li")
         const classNombre = claseUnica()
         lista.className = classNombre;
+
+        const numeroAleatorio = randNum();
+        
+        
+        rickYmorty(numeroAleatorio).then((response) =>{
         resultadoFinal.appendChild(lista)
-        const numeroAleatorio = randNum()
-        rickYmorty(numeroAleatorio,lista);
-        lista.innerHTML = !isNaN(impuestoAplicable) && valorCalculable != 0? `<button class = "borrarBtn" data-class ="${classNombre}">X</button>El valor del impuesto es de ${(Number.isInteger(impuestoAplicable)?impuestoAplicable:(impuestoAplicable*100-100).toFixed(2))}% y mas el valor del juego te da un total de ${(valorCalculable * (Number.isInteger(impuestoAplicable)?impuestoAplicable/100+1:impuestoAplicable)).toFixed(2)} ${monedaAplicable}` : `<button class = "borrarBtn" data-class ="${classNombre}">X</button>Los datos ingresados no son validos, porfavor intente nuevamente`;
-       
-       //algoritmo para borrar la li seleccionada por el boton utilizando el atributo data
-        const borrarBtn = document.querySelectorAll(".borrarBtn");
-        borrarBtn.forEach(boton =>{
-        boton.addEventListener("click", ()=>{
-        const eliminarLi = document.querySelector(`.${boton.getAttribute("data-class")}`);
-        if(eliminarLi){
-                resultadoFinal.removeChild(eliminarLi);
-        }
-   });
+        lista.innerHTML = !isNaN(impuestoAplicable) && valorCalculable != 0? `<button class = "borrarBtn" data-class ="${classNombre}">X</button> <img class = "rick" src= "${response.image}" alt="random"/> El valor del impuesto es de ${(Number.isInteger(impuestoAplicable)?impuestoAplicable:(impuestoAplicable*100-100).toFixed(2))}% y mas el valor del juego te da un total de ${(valorCalculable * (Number.isInteger(impuestoAplicable)?impuestoAplicable/100+1:impuestoAplicable)).toFixed(2)} ${monedaAplicable}` : `<button class = "borrarBtn" data-class ="${classNombre}">X</button> <img class = "rick" src= "${response.image}" alt="random"/> Los datos ingresados no son validos, porfavor intente nuevamente`;
+
+//algoritmo para borrar la li seleccionada por el boton utilizando el atributo data
+               const borrarBtn = document.querySelectorAll(".borrarBtn");
+               borrarBtn.forEach(boton =>{
+               boton.addEventListener("click", ()=>{
+               const eliminarLi = document.querySelector(`.${boton.getAttribute("data-class")}`);
+               if(eliminarLi){
+                       resultadoFinal.removeChild(eliminarLi);
+               }
+          });
+       });
 });
-
 }
-
 
 
 // Funcion que verifica si el texto contiene solo letras y numeros 
