@@ -22,3 +22,6 @@ if (localStorage.getItem("Pais")) {
   } else {
     paises = paises
   }
+
+//variable para almacenar el modo de color de la pagina
+let cambiarModo = localStorage.getItem("dark-mode");

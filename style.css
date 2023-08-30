@@ -1,9 +1,10 @@
-body{
+.body{
     background-color: antiquewhite;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+
 
 .select{
     display: flex;
@@ -11,7 +12,9 @@ body{
     align-items: center;
     height: 20vh;
     width: 45vw;
-    background-color: rgba(255, 0, 0, 0.561);
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px black;
+    background-color:hwb(0 42% 41% / 0.595) ;
     margin: 2% auto;
 }
 
@@ -23,7 +26,7 @@ body{
 }
 #paises{
     font-family: 'Courier New', Courier, monospace;
-    background-color:  rgba(248, 177, 177, 0.749) ;
+    background-color:hwb(0 20% 24% / 0.598) ;
     border-radius: 20px;
     box-shadow: 2px 2px 2px black;
     height: 10vh;
@@ -38,7 +41,9 @@ body{
     align-items: center;
     height: 20vh;
     width: 45vw;
-    background-color: rgba(255, 0, 0, 0.561);
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px black;
+    background-color:hwb(0 42% 41% / 0.595) ;
     margin: 2% auto;
 }
 .titulo{
@@ -52,10 +57,13 @@ body{
     width: 10vw;
     margin-right: 1%;
 }
-
+.botones{
+    display: flex;
+    justify-content: space-between;
+}
 #buttonImp, #botonAgregar, #botonReiniciar{
     font-family: 'Courier New', Courier, monospace;
-    background-color:  rgba(248, 177, 177, 0.749) ;
+    background-color:hwb(0 20% 24% / 0.598) ;
     border-radius: 20px;
     box-shadow: 2px 2px 2px black;
     height: 7vh;
@@ -69,7 +77,8 @@ body{
     padding-top: 0.5%;
 }
 
-.listaJuego{
+li{
+    position: relative;
     display: flex;
     justify-content: center;
     margin: 1% auto;
@@ -80,6 +89,36 @@ body{
     height: 7vh;
     width: 55vw;
     list-style: none;
-    background-color:  rgba(248, 177, 177, 0.749);
+    background-color:hwb(0 5% 22% / 0.437) ;
+    border-radius: 45px;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.765);
+
 }
 
+.borrarBtn{
+    cursor: pointer;
+    position: absolute;
+    font-size: large;
+    top: 0.69rem;
+    right: 1.1rem;
+    background-color: hwb(0 5% 22% / 0) ;
+    border-color: rgba(0, 0, 0, 0);
+}
+
+#darkMode{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:hwb(0 20% 24% / 0.598) ;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px #000000;
+    height: 4vw;
+    width: 6vw;
+    margin: 1%;
+    cursor: pointer;
+}
+
+
+.bodyColor{
+    background-color: rgba(54, 41, 154, 0.827);
+}

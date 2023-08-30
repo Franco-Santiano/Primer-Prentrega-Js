@@ -22,16 +22,61 @@ function determinarImp(){
                 monedaAplicable = pais.moneda
                 return ;}})}
 
-//funcion encargada de calcular el valor del juego con el impuesto e inyectar en una li los resultados.
-function calcularImp(){
-        let valorDelJuego = document.querySelector("#input")
-        let valorCalculable = valorDelJuego.value
-        let lista = document.createElement("li")
-        lista.className = "listaJuego"
-        resultadoFinal.appendChild(lista)
-        lista.innerText = !isNaN(impuestoAplicable) && valorCalculable != 0? `El valor del impuesto es de ${(Number.isInteger(impuestoAplicable)?impuestoAplicable:(impuestoAplicable*100-100).toFixed(2))}% y mas el valor del juego te da un total de ${(valorCalculable * (Number.isInteger(impuestoAplicable)?impuestoAplicable/100+1:impuestoAplicable)).toFixed(2)} ${monedaAplicable}` : "Los datos ingresados no son validos, porfavor intente nuevamente";
+//Funcion para crear clases unicas
+function claseUnica() {
+        return 'li-' + new Date().getTime();
 
 }
+
+//funcion para generar un numero aleatorio
+function randNum(){
+        const min = 1;
+        const max = 826;
+        const numero = Math.random();
+        const numeroAleatorio = Math.floor(numero * (max-min +1 )) + min;
+        return numeroAleatorio;
+}
+
+const numAleatorio = randNum()
+
+const rickYmorty = (aleatorio, lista) => {
+        fetch(`https://rickandmortyapi.com/api/character/${aleatorio}`)
+        .then((resp)=>resp.json())
+        .then ((data) => {
+                const img = document.createElement("div");
+                img.innerHTML = `
+                <div>
+                <img src ="${data.image}" alt = "random" />
+                </div>`;
+        lista.appendChild(img);
+        });
+}
+const numeroAleatorio = randNum()
+
+//funcion encargada de calcular el valor del juego con el impuesto e inyectar en una li los resultados.
+function calcularImp(){
+        const valorDelJuego = document.querySelector("#input")
+        let valorCalculable = valorDelJuego.value
+        const lista = document.createElement("li")
+        const classNombre = claseUnica()
+        lista.className = classNombre;
+        resultadoFinal.appendChild(lista)
+        lista.innerHTML = !isNaN(impuestoAplicable) && valorCalculable != 0? `<button class = "borrarBtn" data-class ="${classNombre}">X</button>El valor del impuesto es de ${(Number.isInteger(impuestoAplicable)?impuestoAplicable:(impuestoAplicable*100-100).toFixed(2))}% y mas el valor del juego te da un total de ${(valorCalculable * (Number.isInteger(impuestoAplicable)?impuestoAplicable/100+1:impuestoAplicable)).toFixed(2)} ${monedaAplicable}` : `<button class = "borrarBtn" data-class ="${classNombre}">X</button>Los datos ingresados no son validos, porfavor intente nuevamente`;
+       
+       //algoritmo para borrar la li seleccionada por el boton utilizando el atributo data
+        const borrarBtn = document.querySelectorAll(".borrarBtn");
+        borrarBtn.forEach(boton =>{
+        boton.addEventListener("click", ()=>{
+        const eliminarLi = document.querySelector(`.${boton.getAttribute("data-class")}`);
+        if(eliminarLi){
+                resultadoFinal.removeChild(eliminarLi);
+        }
+        rickYmorty(numeroAleatorio,lista);
+   });
+});
+
+}
+
 
 
 // Funcion que verifica si el texto contiene solo letras y numeros 
@@ -106,4 +151,19 @@ function agregarOpcion(nombre){
 function limpiarHistorial(){
        let listaBorrada = document.querySelector(".resultadosLista");
        listaBorrada.innerHTML = "";
+}
+
+//Funciones de modo oscuro
+function modoOscuro(){
+buttonColor.innerHTML=`<img src="./assets/icons/light-bulb-svgrepo-com.svg" alt="">`
+seleccion.classList.add("bodyColor");
+body.classList.add("bodyColor");
+localStorage.setItem("dark-mode","active");
+};
+
+function modoClaro(){
+buttonColor.innerHTML=`<img src=./assets/icons/light-bulbblack-svgrepo-com.svg>`
+seleccion.classList.remove("bodyColor");
+body.classList.remove("bodyColor");
+localStorage.setItem("dark-mode","desactive");
 }

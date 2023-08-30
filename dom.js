@@ -27,3 +27,13 @@ botonAgregar.addEventListener("click",agregarPais);
 //Creo un evento donde al recargar la pagina se me generan las opciones de paises.
 window.addEventListener("load",crearOpciones);
 
+//Obtengo nodos para cambiar el modo de color de la pagina
+const select = document.querySelector(".select")
+const buttonColor = document.querySelector("#darkMode");
+const body = document.body
+buttonColor.addEventListener("click",()=>{
+    cambiarModo = localStorage.getItem("dark-mode");
+    cambiarModo === "active"?modoClaro():modoOscuro()});
+
+
+    cambiarModo === "active"?modoOscuro():modoClaro();
