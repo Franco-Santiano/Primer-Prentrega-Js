@@ -82,7 +82,7 @@ li{
     display: flex;
     justify-content: center;
     margin: 1% auto;
-    padding: 2.3% 1.5% 1.5% 1.5%;
+    padding: 2.3% 1.5% 1.5% 0;
     font-size: 1.2rem;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
@@ -92,6 +92,14 @@ li{
     background-color:hwb(0 5% 22% / 0.437) ;
     border-radius: 45px;
     box-shadow: 4px 4px rgba(0, 0, 0, 0.765);
+
+}
+.rick{
+    position: absolute;
+    top: 1.2rem;
+    left: 1.2rem;
+    height: 100px;
+    border-radius: 25px;
 
 }
 

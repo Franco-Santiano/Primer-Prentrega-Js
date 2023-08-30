@@ -45,12 +45,12 @@ const rickYmorty = (aleatorio, lista) => {
                 const img = document.createElement("div");
                 img.innerHTML = `
                 <div>
-                <img src ="${data.image}" alt = "random" />
+                <img class= "rick" src ="${data.image}" alt = "random" />
                 </div>`;
         lista.appendChild(img);
         });
 }
-const numeroAleatorio = randNum()
+
 
 //funcion encargada de calcular el valor del juego con el impuesto e inyectar en una li los resultados.
 function calcularImp(){
@@ -60,6 +60,7 @@ function calcularImp(){
         const classNombre = claseUnica()
         lista.className = classNombre;
         resultadoFinal.appendChild(lista)
+        const numeroAleatorio = randNum()
         rickYmorty(numeroAleatorio,lista);
         lista.innerHTML = !isNaN(impuestoAplicable) && valorCalculable != 0? `<button class = "borrarBtn" data-class ="${classNombre}">X</button>El valor del impuesto es de ${(Number.isInteger(impuestoAplicable)?impuestoAplicable:(impuestoAplicable*100-100).toFixed(2))}% y mas el valor del juego te da un total de ${(valorCalculable * (Number.isInteger(impuestoAplicable)?impuestoAplicable/100+1:impuestoAplicable)).toFixed(2)} ${monedaAplicable}` : `<button class = "borrarBtn" data-class ="${classNombre}">X</button>Los datos ingresados no son validos, porfavor intente nuevamente`;
        
